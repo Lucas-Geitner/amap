@@ -8,71 +8,59 @@
 		"build": "next build",
 		"start": "next start",
 		"cypress:open": "cypress open",
-		"test": "jest --env=jsdom --collectCoverage --watch"
+		"test": "xo"
 	},
 	"dependencies": {
-		"@types/ramda": "^0.26.9",
-		"@types/react-test-renderer": "^16.8.2",
 		"@zeit/next-sass": "^1.0.1",
 		"@zeit/next-typescript": "^1.1.1",
-		"aws-sdk": "^2.474.0",
-		"cypress": "latest",
-		"eslint-config-xo-react": "^0.19.0",
-		"faunadb": "^2.6.1",
 		"graphql": "^14.3.1",
 		"next": "^8.1.0",
 		"node-sass": "^4.12.0",
 		"ramda": "^0.26.1",
 		"react": "^16.8.6",
 		"react-dom": "^16.8.6",
-		"react-feather": "^1.1.6",
-		"react-test-renderer": "^16.8.6",
-		"rxjs": "^6.5.2"
-	},
-	"jest": {
-		"preset": "ts-jest/presets/js-with-ts",
-		"testEnvironment": "jsdom",
-		"moduleFileExtensions": [
-			"ts",
-			"tsx",
-			"js"
-		],
-		"transform": {
-			"^.+\\.(ts|tsx)$": "ts-jest"
-		},
-		"testMatch": [
-			"__tests__/*.(ts|tsx)"
-		],
-		"setupFiles": [
-			"./jest.setup.js"
-		],
-		"testPathIgnorePatterns": [
-			"./.next/",
-			"./node_modules/"
-		],
-		"globals": {
-			"ts-jest": {
-				"tsConfig": "tsconfig.jest.json",
-				"diagnostics": false
-			}
-		}
+		"react-feather": "^1.1.6"
 	},
 	"devDependencies": {
 		"@testing-library/react": "^8.0.1",
 		"@types/jest": "^24.0.14",
 		"@types/next": "^8.0.5",
-		"@types/react": "^16.8.19",
+		"@types/ramda": "^0.26.9",
+		"@types/react": "^16.8.20",
 		"@types/react-dom": "^16.8.4",
+		"@types/react-test-renderer": "^16.8.2",
 		"@typescript-eslint/eslint-plugin": "^1.10.2",
+		"@typescript-eslint/parser": "^1.10.2",
+		"@typescript-eslint/typescript-estree": "^1.10.2",
 		"autoprefixer": "^9.6.0",
+		"babel-eslint": "^10.0.1",
 		"cssnano": "^4.1.10",
+		"eslint": "^5.16.0",
+		"eslint-config-airbnb": "^17.1.0",
+		"eslint-config-base": "^1.0.0",
 		"eslint-config-xo": "^0.26.0",
+		"eslint-config-xo-react": "^0.19.0",
 		"eslint-config-xo-typescript": "^0.14.0",
+		"eslint-import-resolver-typescript": "^1.1.1",
+		"eslint-plugin-jsx-a11y": "^6.2.1",
+		"eslint-plugin-react": "^7.13.0",
+		"eslint-plugin-react-hooks": "^1.6.0",
 		"jest-dom": "^3.5.0",
 		"postcss-easy-import": "^3.0.0",
+		"react-test-renderer": "^16.8.6",
 		"react-testing-library": "^8.0.1",
 		"tailwindcss": "^1.0.4",
 		"ts-jest": "^24.0.2",
-		"typescript": "^3.5.2"
+		"typescript": "^3.5.2",
+		"typescript-eslint-parser": "^22.0.0",
+		"xo": "^0.24.0"
+	},
+	"xo": {
+		"extends": ["xo", "xo-react", "xo-react/space", "xo-typescript"],
+		"parser": "@typescript-eslint/parser",
+		"extensions": ["ts", "tsx"],
+		"parserOptions": {
+			"project": "./tsconfig.json"
+		}
 	}
 }
