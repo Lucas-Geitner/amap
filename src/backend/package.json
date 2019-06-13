@@ -1,0 +1,23 @@
+{
+  "name": "test_fauna_db_graphql_exemple",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "ts-node-dev index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@apollo/gateway": "^0.6.6",
+    "apollo-server": "^2.4.8",
+    "faunadb": "^2.6.1",
+    "graphql": "^14.2.1",
+    "ts-node-dev": "^1.0.0-pre.40",
+    "typescript": "^3.5.1"
+  },
+  "devDependencies": {
+    "@types/node": "^12.0.8"
+  }
+}
