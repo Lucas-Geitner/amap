@@ -1,6 +1,6 @@
 import "../styles/index.scss"
 import * as React from "react"
-import { Props } from "../components/Props";
+import { Props } from "../../util/Props";
 import CardList from "../components/CardList"
 
 const Home: React.FunctionComponent<Props> = (props) => {

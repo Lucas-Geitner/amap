@@ -1,6 +1,6 @@
 import { Menu } from 'react-feather';
 import * as React from "react"
-import { Props } from './Props';
+import { Props } from '../../util/Props';
 
 const Header: React.FunctionComponent<Props> = () => {
     return(
