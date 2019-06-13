@@ -2,8 +2,7 @@ import faunadb, { query as q } from 'faunadb'
 import { ApolloServer, gql } from 'apollo-server'
 
 if (!process.env.FAUNADB && typeof (process.env.FAUNADB) !== "string") {
-  process.env.FAUNADB = "fnADQuu40YACB1zSTNpapw2QFPQYYqbeU6PF9MSi"
-  // throw new Error("issue with env variable of FaunaDB")
+  throw new Error("issue with env variable of FaunaDB")
 }
 
 const client = new faunadb.Client({ secret: process.env.FAUNADB })
