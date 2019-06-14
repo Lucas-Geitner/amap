@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { isEmpty, length, equals } from 'ramda';
-import { Amap } from '../../util/Props';
-
+import { isEmpty, length, equals, not } from 'ramda';
+import { from } from 'rxjs';
+import { map, filter, reduce, tap, pluck } from 'rxjs/operators';
+import { Amap, Paysan } from '../../util/Props';
 /**
  * Card of AMAP
  * @param param0
@@ -10,26 +11,26 @@ const Card: React.FunctionComponent<Amap> = ({
   title,
   description,
   image_secure_url,
-  paysans = [{}],
+  paysans = [],
 }: Amap) => {
-  const isPaysan = !isEmpty(paysans);
+  const isPaysan = not(isEmpty(paysans));
   const paysanLenght = length(paysans);
   const isOnlyOnePaysan = equals(paysanLenght, 1);
   const pluralized = isOnlyOnePaysan ? '' : 's';
 
-  // Map pour ajouter tout les champs
+  let stringFood = '';
 
-  // let food = map(prop("nourritures"))(paysans)
-  // const food = paysans.map((p: any) => p && console.log(p) && !is(p.nourritures) && !isEmpty(p.nourritures) )
-  //  = concat(food)
-  // let concatFood = chain(identity(food))
-  // let isFood = isEmpty(concatFood)
-  // undefined
-  // [], ["", "", ""]
-  // function
-  // console.log(food, { isFood, concatFood })
-  // const moreThen20Characters = gt(20, concatenedFood)
-  // let foodDisplayd = both(isPaysan, )) ? food : food.slice(0, 21) + "..."
+  from(paysans)
+    .pipe(
+      pluck('nourritures'),
+      filter((u: Paysan | undefined) => not(isEmpty(u))),
+      map((x: [string]) => x.join(', ')),
+      tap(x => console.log({ x })),
+      reduce((u: string, acc: string) => acc + u),
+      map((x: [string]) => (x.length > 60 ? `${x.slice(0, 30)}...` : x)),
+      tap((s: string) => (stringFood = s))
+    )
+    .subscribe();
 
   return (
     <div className="mb-10 mt-10">
@@ -42,7 +43,7 @@ const Card: React.FunctionComponent<Amap> = ({
           <span className="bg-teal-200 text-teal-800 font-medium uppercase tracking-wide text-xs leading-none px-1 inline-block rounded-lg">
             Active
           </span>
-          {/* <div className="ml-2 text-xs text-gray-600 inline-block">{concatenedFood} </div> */}
+          <div className="ml-2 text-xs text-gray-600 inline-block">{stringFood}</div>
           <h4 className="mt-1 text-gray-900 font-semibold text-lg">{title}</h4>
           <p className="mt-1 text-gray-700 font-light text-sm">{description}</p>
           {isPaysan && (

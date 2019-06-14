@@ -13,6 +13,7 @@ const cardsLists: [Amap] | any = [
       {
         email: 'joe.lepaysan@test.com',
         name: 'Joe',
+        nourritures: ['Pommes', 'Fruits', 'Poires', 'Farine', 'Confitures'],
       },
     ],
   },
@@ -27,20 +28,24 @@ const cardsLists: [Amap] | any = [
         email: 'nina.lepaysan@test.com',
         nourritures: ['Pommes', 'Fruits', 'Poires', 'Farine', 'Confitures'],
       },
+      {
+        email: 'nina.lepaysan@test.com',
+        nourritures: ['Pommes', 'Fruits', 'Poires', 'Farine', 'Confitures'],
+      },
     ],
   },
-  // {
-  //     image_secure_url: "https://files-4o92cnmdx.now.sh/pineapple-supply-co-230315-unsplash.jpg",
-  //     title: "Amap de Saint Maure",
-  //     description: "Amap de Saint Maure",
-  //     id: "qfldskjlkfqsdjllkfjsdlkjflskjl"
-  // },
-  // {
-  //     image_secure_url: "https://files-aohg4if1g.now.sh/neha-deshmukh-5769-unsplash.jpg",
-  //     title: "Amap du 11ême ",
-  //     description: "Amap du 11ême",
-  //     id: "qfldskjlkfqsdjllkfqsffsdjsdlkjflskjl"
-  // }
+  {
+    image_secure_url: 'https://files-4o92cnmdx.now.sh/pineapple-supply-co-230315-unsplash.jpg',
+    title: 'Amap de Saint Maure',
+    description: 'Amap de Saint Maure',
+    id: 'dsfsfdfs',
+  },
+  {
+    image_secure_url: 'https://files-aohg4if1g.now.sh/neha-deshmukh-5769-unsplash.jpg',
+    title: 'Amap du 11ême ',
+    description: 'Amap du 11ême',
+    id: 'qfldskjlkfqsdjllkfqsffsdjsdfdsfdlkjflskjl',
+  },
 ];
 
 const CardList: React.FunctionComponent<Props> = () => (
