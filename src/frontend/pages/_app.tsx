@@ -1,5 +1,6 @@
 import React from 'react';
 import App, { Container } from 'next/app';
+import * as Sentry from '@sentry/browser';
 import Header from '../components/Header';
 import SearchComponent from '../components/SearchComponent';
 
@@ -7,6 +8,8 @@ interface IInitialProp {
   Component: any;
   ctx: any;
 }
+
+Sentry.init({ dsn: 'https://e4540e6d14844cc0aa513131c07b80e0@sentry.io/1482486' });
 
 class MyApp extends App {
   static async getInitialProps({ Component, ctx }: IInitialProp) {
@@ -17,6 +20,18 @@ class MyApp extends App {
     }
 
     return { pageProps };
+  }
+
+  componentDidCatch(error, errorInfo) {
+    Sentry.withScope(scope => {
+      Object.keys(errorInfo).forEach(key => {
+        scope.setExtra(key, errorInfo[key]);
+      });
+
+      Sentry.captureException(error);
+    });
+
+    super.componentDidCatch(error, errorInfo);
   }
 
   render() {

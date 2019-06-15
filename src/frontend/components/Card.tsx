@@ -23,9 +23,9 @@ const Card: React.FunctionComponent<Amap> = ({
   from(paysans)
     .pipe(
       pluck('nourritures'),
-      filter((u: Paysan | undefined) => not(isEmpty(u))),
+      filter((u: Paysan | undefined) => u !== undefined),
       map((x: [string]) => x.join(', ')),
-      tap(x => console.log({ x })),
+      // tap(x => console.log({ x })),
       reduce((u: string, acc: string) => acc + u),
       map((x: [string]) => (x.length > 60 ? `${x.slice(0, 30)}...` : x)),
       tap((s: string) => (stringFood = s))
