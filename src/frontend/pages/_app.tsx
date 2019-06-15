@@ -1,8 +1,10 @@
 import React from 'react';
 import App, { Container } from 'next/app';
 import * as Sentry from '@sentry/browser';
+import { ApolloProvider } from '@apollo/react-hooks';
 import Header from '../components/Header';
 import SearchComponent from '../components/SearchComponent';
+import withApolloClient from '../lib/with-apollo';
 
 interface IInitialProp {
   Component: any;
@@ -35,20 +37,24 @@ class MyApp extends App {
   }
 
   render() {
-    const { Component, pageProps } = this.props;
+    const { Component, pageProps, apolloClient } = this.props;
 
     return (
       <Container>
-        <div id="app" className="bg-gray-200 antialiased">
-          <Header {...pageProps} />
-          <SearchComponent {...pageProps} />
-          <main className="px-4 py-6">
-            <Component {...pageProps} />
-          </main>
-        </div>
+        <ApolloProvider client={apolloClient}>
+          <React.StrictMode>
+            <div id="app" className="bg-gray-200 antialiased">
+              <Header {...pageProps} />
+              <SearchComponent {...pageProps} />
+              <main className="px-4 py-6">
+                <Component {...pageProps} />
+              </main>
+            </div>
+          </React.StrictMode>
+        </ApolloProvider>
       </Container>
     );
   }
 }
 
-export default MyApp;
+export default withApolloClient(MyApp);

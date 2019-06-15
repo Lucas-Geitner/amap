@@ -3,9 +3,9 @@ import { isEmpty, length, equals, not } from 'ramda';
 import { from } from 'rxjs';
 import { map, filter, reduce, tap, pluck } from 'rxjs/operators';
 import { Amap, Paysan } from '../../util/Props';
+
 /**
  * Card of AMAP
- * @param param0
  */
 const Card: React.FunctionComponent<Amap> = ({
   title,
@@ -22,10 +22,10 @@ const Card: React.FunctionComponent<Amap> = ({
 
   from(paysans)
     .pipe(
+      // tap(x => console.log(x)), // ?
       pluck('nourritures'),
       filter((u: Paysan | undefined) => u !== undefined),
       map((x: [string]) => x.join(', ')),
-      // tap(x => console.log({ x })),
       reduce((u: string, acc: string) => acc + u),
       map((x: [string]) => (x.length > 60 ? `${x.slice(0, 30)}...` : x)),
       tap((s: string) => (stringFood = s))
