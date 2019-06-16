@@ -1,9 +1,17 @@
 import faunadb, { query as q } from 'faunadb'
 import { ApolloServer, gql } from 'apollo-server'
 
+
+
 if (!process.env.FAUNADB && typeof (process.env.FAUNADB) !== "string") {
-  throw new Error("issue with env variable of FaunaDB")
+  require('dotenv').config()
+  if (!process.env.FAUNADB && typeof (process.env.FAUNADB) !== "string"){
+    throw new Error("issue with env variable of FaunaDB")
+  }
 }
+
+
+console.log(process.env)
 
 const client = new faunadb.Client({ secret: process.env.FAUNADB })
 

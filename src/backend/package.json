@@ -12,6 +12,7 @@
   "dependencies": {
     "@apollo/gateway": "^0.6.6",
     "apollo-server": "^2.4.8",
+    "dotenv": "^8.0.0",
     "faunadb": "^2.6.1",
     "graphql": "^14.2.1",
     "ts-node-dev": "^1.0.0-pre.40",
