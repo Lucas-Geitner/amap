@@ -7,15 +7,15 @@ import { AmapProvider, useAmap } from '../intelligence/amap-context';
 const Card: React.FunctionComponent<Props> = () => {
   const { state, fetch } = useAmap();
   const i = fetch();
-  console.log(i);
+  // console.log(i);
   return state.amaps.map((i: Amap) => <Cards {...i} key={i.id} />);
 };
 
 const CardList: React.FunctionComponent<Props> = props => (
   <AmapProvider>
-    <div>
+    <section data-testId="cardLists">
       <Card {...props} />
-    </div>
+    </section>
   </AmapProvider>
 );
 

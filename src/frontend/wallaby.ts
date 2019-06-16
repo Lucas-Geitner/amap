@@ -1,6 +1,6 @@
-module.exports = function(w) {
+module.exports = function(w: any) {
   return {
-    files: ['components/*.tsx'],
+    files: ['components/*.tsx', 'intelligence/*tsx', 'lib/test-utils.tsx'],
     testFramework: 'jest',
     env: {
       type: 'node',
