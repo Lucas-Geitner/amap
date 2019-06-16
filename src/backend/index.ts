@@ -2,11 +2,13 @@ import faunadb, { query as q } from 'faunadb'
 import { ApolloServer, gql } from 'apollo-server'
 
 
-
+// PAS EN PRODUCTION
 if (!process.env.FAUNADB && typeof (process.env.FAUNADB) !== "string") {
+  // UTILISE .ENV file
   require('dotenv').config()
+  // reverifie
   if (!process.env.FAUNADB && typeof (process.env.FAUNADB) !== "string"){
-    throw new Error("issue with env variable of FaunaDB")
+    throw new Error("issue with env variable of FaunaDB, touch .env && put FAUNADB=https://fauna.com/")
   }
 }
 
