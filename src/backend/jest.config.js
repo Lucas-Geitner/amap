@@ -1,10 +1,10 @@
 module.exports = {
     "roots": [
-        "<rootDir>/index.ts",
+        // "<rootDir>/index.ts",
         "<rootDir>/__tests__",
     ],
     "transform": {
-        "^.+\\.ts$": "babel-jest"
+        "^.+\\.tsx$": "babel-jest"
     },
     collectCoverage: true,
     moduleFileExtensions: ["ts", "tsx", "js", "jsx", "json", "node"],

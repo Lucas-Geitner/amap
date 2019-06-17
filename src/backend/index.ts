@@ -12,9 +12,6 @@ if (!process.env.FAUNADB && typeof (process.env.FAUNADB) !== "string") {
   }
 }
 
-
-console.log(process.env)
-
 const client = new faunadb.Client({ secret: process.env.FAUNADB })
 
 const {
