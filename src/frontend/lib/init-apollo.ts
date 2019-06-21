@@ -3,12 +3,22 @@ import { ApolloClient } from 'apollo-client';
 import fetch from 'isomorphic-unfetch';
 import { HttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
+import gql from 'graphql-tag';
+// import withApolloClient from '../pages/_app';
 
 let apolloClient = null;
 
 function create(initialState: any) {
+  const typeDefs = gql`
+    extend type Query {
+      visibilityFilter: String!
+    }
+  `;
+
+  const cache = new InMemoryCache().restore(initialState || {});
+
   // Check out https://github.com/zeit/next.js/pull/4611 if you want to use the AWSAppSyncClient
-  return new ApolloClient({
+  const apolloClient = new ApolloClient({
     connectToDevTools: process.browser,
     ssrMode: !process.browser, // Disables forceFetch on the server (so queries are only run once)
     link: new HttpLink({
@@ -17,8 +27,40 @@ function create(initialState: any) {
       // Use fetch() polyfill on the server
       fetch: !process.browser && fetch,
     }),
-    cache: new InMemoryCache().restore(initialState || {}),
+    cache,
+    typeDefs,
+    resolvers: {
+      Query: {
+        visibilityFilter: (_, args, { getCacheKey }) =>
+          getCacheKey({ __typename: 'Book', id: args.id }),
+      },
+      Mutation: {
+        updateConnection: (_root, variables, { cache, getCacheKey }) => {
+          const query = gql`
+            {
+              visibilityFilter
+            }
+          `;
+          const todo = cache.readQuery({ query });
+          const data = variables;
+          cache.writeData({ todo, data });
+          return null;
+        },
+      },
+    },
   });
+
+  cache.writeData({
+    data: {
+      todos: [],
+      visibilityFilter: 'SHOW_ALL',
+      networkStatus: {
+        __typename: 'NetworkStatus',
+        isConnected: false,
+      },
+    },
+  });
+  return apolloClient;
 }
 
 export default function initApollo(initialState = {}) {
@@ -32,6 +74,5 @@ export default function initApollo(initialState = {}) {
   if (!apolloClient) {
     apolloClient = create(initialState);
   }
-
   return apolloClient;
 }

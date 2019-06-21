@@ -13,13 +13,13 @@
 	"dependencies": {
 		"@apollo/react-hooks": "^0.1.0-beta.7",
 		"@apollo/react-testing": "^0.1.0-beta.2",
-		"@sentry/browser": "^5.4.0",
+		"@sentry/browser": "^5.4.3",
 		"@zeit/next-sass": "^1.0.1",
 		"@zeit/next-typescript": "^1.1.1",
-		"apollo-cache-inmemory": "^1.6.0",
-		"apollo-client": "^2.6.0",
-		"apollo-link-http": "^1.5.14",
-		"apollo-link-ws": "^1.0.17",
+		"apollo-cache-inmemory": "^1.6.2",
+		"apollo-client": "^2.6.3",
+		"apollo-link-http": "^1.5.15",
+		"apollo-link-ws": "^1.0.18",
 		"graphql": "^14.3.1",
 		"graphql-tag": "^2.10.1",
 		"isomorphic-unfetch": "^3.0.0",
@@ -35,11 +35,11 @@
 	"devDependencies": {
 		"@babel/core": "^7.4.5",
 		"@testing-library/react": "^8.0.1",
-		"@types/graphql": "^14.2.0",
-		"@types/jest": "^24.0.14",
+		"@types/graphql": "^14.2.1",
+		"@types/jest": "^24.0.15",
 		"@types/next": "^8.0.5",
 		"@types/ramda": "^0.26.9",
-		"@types/react": "^16.8.20",
+		"@types/react": "^16.8.22",
 		"@types/react-dom": "^16.8.4",
 		"@types/react-test-renderer": "^16.8.2",
 		"@typescript-eslint/eslint-plugin": "^1.10.2",
@@ -47,7 +47,7 @@
 		"@typescript-eslint/typescript-estree": "^1.10.2",
 		"autoprefixer": "^9.6.0",
 		"ava": "^2.1.0",
-		"babel-eslint": "^10.0.1",
+		"babel-eslint": "^10.0.2",
 		"babel-jest": "^24.8.0",
 		"cssnano": "^4.1.10",
 		"eslint": "^5.16.0",
@@ -67,23 +67,15 @@
 		"react-testing-library": "^8.0.1",
 		"tailwindcss": "^1.0.4",
 		"ts-jest": "^24.0.2",
-		"ts-node": "^8.2.0",
+		"ts-node": "^8.3.0",
 		"typescript": "^3.5.2",
 		"typescript-eslint-parser": "^22.0.0",
 		"xo": "^0.24.0"
 	},
 	"xo": {
-		"extends": [
-			"xo",
-			"xo-react",
-			"xo-react/space",
-			"xo-typescript"
-		],
+		"extends": ["xo", "xo-react", "xo-react/space", "xo-typescript"],
 		"parser": "@typescript-eslint/parser",
-		"extensions": [
-			"ts",
-			"tsx"
-		],
+		"extensions": ["ts", "tsx"],
 		"parserOptions": {
 			"project": "./tsconfig.json"
 		}

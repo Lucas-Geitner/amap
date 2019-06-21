@@ -12,7 +12,7 @@ const Header: React.FunctionComponent<Props> = () => (
     </div>
 
     <nav className="text-gray-400 bg-">
-      <div data-testid="CTA">
+      <div>
         <a>Carte</a>
         <a>Mes amaps</a>
         <a>messages</a>
