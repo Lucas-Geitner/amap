@@ -12,7 +12,7 @@
 	"dependencies": {
 		"@apollo/gateway": "^0.6.6",
 		"@types/graphql": "^14.2.1",
-		"apollo-server": "^2.6.3",
+		"apollo-server": "^2.25.3",
 		"babel-jest": "^24.8.0",
 		"dotenv": "^8.0.0",
 		"faunadb": "^2.6.1",
